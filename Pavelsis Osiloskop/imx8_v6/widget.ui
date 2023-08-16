@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QCustomPlot" name="customPlot" native="true">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>700</width>
+     <height>540</height>
+    </rect>
+   </property>
+   <widget class="Line" name="horizontalLine1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>620</width>
+      <height>3</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(11, 72, 190);</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="horizontalLine2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>500</y>
+      <width>620</width>
+      <height>3</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(11, 72, 190);</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="verticalLine1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>3</width>
+      <height>460</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="verticalLine2">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>40</y>
+      <width>3</width>
+      <height>460</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="horizontalLabel1">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>60</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(14, 171, 231);</string>
+    </property>
+    <property name="text">
+     <string>y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="horizontalLabel2">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>480</y>
+      <width>60</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(14, 171, 231);</string>
+    </property>
+    <property name="text">
+     <string>y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="verticalLabel1">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>480</y>
+      <width>71</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 175, 5);</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="verticalLabel2">
+    <property name="geometry">
+     <rect>
+      <x>589</x>
+      <y>50</y>
+      <width>71</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 175, 5);</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="redLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>5</width>
+      <height>5</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#redLabel
+{
+	background-color: rgb(255, 0, 4);
+	border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pointLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>60</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(67, 117, 255);</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;X: 01234&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Y: 56789&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <zorder>verticalLine1</zorder>
+   <zorder>verticalLine2</zorder>
+   <zorder>horizontalLine2</zorder>
+   <zorder>horizontalLine1</zorder>
+   <zorder>horizontalLabel1</zorder>
+   <zorder>horizontalLabel2</zorder>
+   <zorder>verticalLabel1</zorder>
+   <zorder>verticalLabel2</zorder>
+   <zorder>redLabel</zorder>
+   <zorder>pointLabel</zorder>
+  </widget>
+  <widget class="QLabel" name="uartLabel">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>40</y>
+     <width>361</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>UART</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="receivedDataText">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>110</y>
+     <width>401</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QDial" name="amplitudeDial">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>460</y>
+     <width>225</width>
+     <height>225</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(150, 255, 131);</string>
+   </property>
+   <property name="wrapping">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QDial" name="frequencyDial">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>460</y>
+     <width>225</width>
+     <height>225</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(102, 230, 255);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="amplitudeLabel">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>680</y>
+     <width>225</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>Amplitude:  0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="frequencyLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>680</y>
+     <width>225</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>Frequency:  0 Hz</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="stopButton">
+   <property name="geometry">
+    <rect>
+     <x>1109</x>
+     <y>370</y>
+     <width>101</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Stop Plotting</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="cursor1HorizontalSlider">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>40</y>
+     <width>650</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:horizontal {
+    border: 1px solid white;
+    height: 5px;
+    background: gray;
+    margin: 0 12px;
+}
+
+QSlider::handle:horizontal {
+    background: #FFAF05;
+    border: 5px solid gray;
+    width: 23px;
+    height: 100px;
+    margin: -24px -12px;
+}
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="invertedAppearance">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QSlider" name="cursor1VerticalSlider">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>90</y>
+     <width>20</width>
+     <height>490</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Dikey QSlider */
+QSlider::groove:vertical {
+    border: 1px solid white;
+    width: 5px;
+    background: gray;
+    margin: 12px 0;
+}
+
+QSlider::handle:vertical {
+    background: #0EABE7;
+    border: 5px solid gray;
+    width: 100px;
+    height: 23px;
+    margin: -12px -24px;
+}
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <property name="invertedAppearance">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="verticalEnableRadio">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>280</y>
+     <width>21</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="horizontalEnableRadio">
+   <property name="geometry">
+    <rect>
+     <x>1070</x>
+     <y>280</y>
+     <width>141</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QSlider" name="cursor2VerticalSlider">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>90</y>
+     <width>20</width>
+     <height>490</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:vertical {
+    border: 1px solid white;
+    width: 5px;
+    background: gray;
+    margin: 12px 0;
+}
+
+QSlider::handle:vertical {
+    background: #0EABE7;
+    border: 5px solid gray;
+    width: 100px;
+    height: 23px;
+    margin: -12px -24px;
+}
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="stopRadio">
+   <property name="geometry">
+    <rect>
+     <x>1070</x>
+     <y>370</y>
+     <width>20</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dxLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>640</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dyLabel">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>640</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dataLabel3">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>640</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dataLabel4">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>640</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="verticalCursorButton">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>280</y>
+     <width>120</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vertical Cursor</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="horizontalCursorButton">
+   <property name="geometry">
+    <rect>
+     <x>1090</x>
+     <y>280</y>
+     <width>120</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Horizontal Cursor</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connectButton">
+   <property name="geometry">
+    <rect>
+     <x>919</x>
+     <y>390</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="serialPortComboBox">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>390</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QSlider" name="cursor2HorizontalSlider">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>600</y>
+     <width>650</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:horizontal {
+    border: 1px solid white;
+    height: 5px;
+    background: gray;
+    margin: 0 12px;
+}
+
+QSlider::handle:horizontal {
+    background: #FFAF05;
+    border: 5px solid gray;
+    width: 23px;
+    height: 100px;
+    margin: -24px -12px;
+}
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="invertedAppearance">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="channel1Button">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>180</y>
+     <width>131</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Channel 1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="channel2Button">
+   <property name="geometry">
+    <rect>
+     <x>1080</x>
+     <y>180</y>
+     <width>131</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Channel 2</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="channel1Radio">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>180</y>
+     <width>16</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="channel2Radio">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>180</y>
+     <width>16</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>uartLabel</zorder>
+  <zorder>receivedDataText</zorder>
+  <zorder>amplitudeDial</zorder>
+  <zorder>frequencyDial</zorder>
+  <zorder>amplitudeLabel</zorder>
+  <zorder>frequencyLabel</zorder>
+  <zorder>stopButton</zorder>
+  <zorder>cursor1HorizontalSlider</zorder>
+  <zorder>cursor1VerticalSlider</zorder>
+  <zorder>verticalEnableRadio</zorder>
+  <zorder>horizontalEnableRadio</zorder>
+  <zorder>cursor2VerticalSlider</zorder>
+  <zorder>customPlot</zorder>
+  <zorder>stopRadio</zorder>
+  <zorder>dxLabel</zorder>
+  <zorder>dyLabel</zorder>
+  <zorder>dataLabel3</zorder>
+  <zorder>dataLabel4</zorder>
+  <zorder>verticalCursorButton</zorder>
+  <zorder>horizontalCursorButton</zorder>
+  <zorder>connectButton</zorder>
+  <zorder>serialPortComboBox</zorder>
+  <zorder>cursor2HorizontalSlider</zorder>
+  <zorder>channel1Button</zorder>
+  <zorder>channel2Button</zorder>
+  <zorder>channel1Radio</zorder>
+  <zorder>channel2Radio</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
