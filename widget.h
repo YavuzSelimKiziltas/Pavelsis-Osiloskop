@@ -20,6 +20,8 @@ public:
     Ui::Widget *ui;
     ~Widget();
 
+    void StyleSheet();
+
 private:
     int frequencyValue;
     int amplitudeValue;

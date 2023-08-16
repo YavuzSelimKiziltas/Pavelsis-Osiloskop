@@ -3,8 +3,8 @@
 #include <QSerialPortInfo>                      // Otomatik olarak müsait seri portları listelemekte kullanılacak
 
 /*
- *  Qt Version 5.15.2
  *  Qt Creator 11.0.0
+ *  Qt Version 5.15.2
  *  Kit MSVC2015 64 bit
  *  QCustomPlot Version 2.1.0
 */
@@ -45,6 +45,12 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+
+    ui->channel1Radio->setVisible(0);
+    ui->channel2Radio->setVisible(0);
+    ui->horizontalEnableRadio->setVisible(0);
+    ui->verticalEnableRadio->setVisible(0);
+    ui->stopRadio->setVisible(0);
 
     /* Amplitude degerini ayarlayan widgeti slota bagliyoruz ve default ayarlarini yüklüyoruz
     sliderReleased yerine sliderValueChanged kullanilirsa hizli veri transferinden dolayi
@@ -102,10 +108,10 @@ Widget::Widget(QWidget *parent)
 
 
     // Cursorların rengini ayarlıyoruz
-    ui->verticalLine1->setStyleSheet("background-color: rgb(255, 175, 5);");
-    ui->verticalLine2->setStyleSheet("background-color: rgb(255, 175, 5);");
-    ui->horizontalLine1->setStyleSheet("background-color: rgb(14, 171, 231);");
-    ui->horizontalLine2->setStyleSheet("background-color: rgb(14, 171, 231);");
+    //ui->verticalLine1->setStyleSheet("background-color: rgb(255, 175, 5);");
+    //ui->verticalLine2->setStyleSheet("background-color: rgb(255, 175, 5);");
+    //ui->horizontalLine1->setStyleSheet("background-color: rgb(14, 171, 231);");
+    //ui->horizontalLine2->setStyleSheet("background-color: rgb(14, 171, 231);");
 
     // Slider hareket ettigi zaman cursor'da onunla birlikte hareket ediyor
     connect(ui->cursor1HorizontalSlider, &QSlider::sliderMoved, this, &Widget::draw_vertical_cursor_1);
@@ -139,12 +145,75 @@ Widget::Widget(QWidget *parent)
     ui->customPlot->yAxis->grid()->setSubGridPen(QPen(Qt::gray, 1, Qt::DotLine));
 
     // 40 pixel kenar margini ekler (güzel görünmesi icin)
-    ui->customPlot->plotLayout()->setMargins(QMargins(40, 40, 40, 40));
+    ui->customPlot->plotLayout()->setMargins(QMargins(20, 20, 20, 20));
     ui->customPlot->axisRect()->setAutoMargins(QCP::MarginSide::msNone);
     ui->customPlot->axisRect()->setMargins(QMargins(0, 0, 0, 0));
     ui->customPlot->axisRect()->setupFullAxesBox();
     ui->customPlot->xAxis->setLabel("TIME");
     ui->customPlot->yAxis->setLabel("VOLTAGE");
+
+    //...................................STYLE SHEET...........................................
+    //.........................................................................................
+    //.........................................................................................
+
+    //Kenar Çizgileri (Kare)2
+    ui->customPlot->xAxis->setBasePen(QPen(Qt::white));
+    ui->customPlot->xAxis2->setBasePen(QPen(Qt::white));
+    ui->customPlot->yAxis->setBasePen(QPen(Qt::white));
+    ui->customPlot->yAxis2->setBasePen(QPen(Qt::white));
+    //Grafik içi küçük çizikler
+    ui->customPlot->xAxis->setTickPen(QPen(Qt::red)); //Küçük kenar çizgisi /Alt
+    ui->customPlot->yAxis->setTickPen(QPen(Qt::red)); //Sol
+    ui->customPlot->xAxis2->setTickPen(QPen(Qt::red)); //Üst
+    ui->customPlot->yAxis2->setTickPen(QPen(Qt::red)); //Sağ
+    ui->customPlot->xAxis->setTickLength(0, 3);
+    ui->customPlot->xAxis2->setTickLength(0, 3);
+    ui->customPlot->yAxis->setTickLength(0, 3);
+    ui->customPlot->yAxis2->setTickLength(0, 3);
+    //Numaraların duruş şekli
+    ui->customPlot->xAxis->setTickLabelRotation(0);
+    //Grid rengi
+    ui->customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    ui->customPlot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    ui->customPlot->xAxis2->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    ui->customPlot->yAxis2->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    //Kenar yazıları ve numaralar
+    ui->customPlot->xAxis->setTickLabelColor(Qt::white);
+    ui->customPlot->yAxis->setTickLabelColor(Qt::white);
+    ui->customPlot->xAxis->setLabelColor(Qt::white);
+    ui->customPlot->yAxis->setLabelColor(Qt::white);
+
+    // İlk olarak, bir lineer renk geçişi (gradient) tanımlanıyor, bu gradientin arka plan olarak kullanılması amaçlanıyor.
+    QLinearGradient plotGradient;
+    // Gradientin başlangıç noktası (koordinat: x=0, y=0) ayarlanıyor.
+    plotGradient.setStart(0, 0);
+    // Gradientin sonlandığı nokta (koordinat: x=0, y=350) ayarlanıyor.
+    plotGradient.setFinalStop(0, 350);
+    // Gradientin başlangıç noktasındaki rengi ayarlanıyor (0'a karşılık gelen renk).
+    plotGradient.setColorAt(0, QColor(150,150,150 ));
+    // Gradientin sonlandığı noktadaki rengi ayarlanıyor (1'e karşılık gelen renk).
+    plotGradient.setColorAt(1, QColor(50,50,50));
+    // Oluşturulan gradient, bir UI elemanının arka plan rengi olarak atanıyor (örneğin, bir özel çizim alanı).
+    ui->customPlot->setBackground(plotGradient);
+
+    // Bir başka lineer renk geçişi tanımlanıyor, bu sefer bir eksen kutusu (axisRect) arka planında kullanılacak.
+    QLinearGradient axisRectGradient;
+    // Gradientin başlangıç noktası (koordinat: x=0, y=0) ayarlanıyor.
+    axisRectGradient.setStart(0, 0);
+    // Gradientin sonlandığı nokta (koordinat: x=0, y=350) ayarlanıyor.
+    axisRectGradient.setFinalStop(0, 350);
+    // Gradientin başlangıç noktasındaki rengi ayarlanıyor (0'a karşılık gelen renk).
+    axisRectGradient.setColorAt(0, QColor(110,110,110));
+    // Gradientin sonlandığı noktadaki rengi ayarlanıyor (1'e karşılık gelen renk).
+    axisRectGradient.setColorAt(1, QColor(150,150,150));
+    // Oluşturulan gradient, bir UI elemanının ekseni çevreleyen alanın arka plan rengi olarak atanıyor.
+    ui->customPlot->axisRect()->setBackground(axisRectGradient);
+
+    // X ve Y ekseni ızgara aralıklarını ayarla
+    ui->customPlot->xAxis->ticker()->setTickCount(1);
+    ui->customPlot->yAxis->ticker()->setTickCount(1);
+    ui->customPlot->yAxis2->ticker()->setTickCount(1);
+    ui->customPlot->xAxis2->ticker()->setTickCount(1);
 
 }
 
@@ -722,4 +791,11 @@ void Widget::on_connectButton_pressed()
         numberOfErrors++;
         ui->connectButton->setStyleSheet("background-color: rgb(255, 255, 255);");
     }
+}
+
+//StyleSheet Fonskiyonu
+void Widget::StyleSheet(){
+    //ui->customPlot->setStyleSheet("background-color: rgb(122, 122, 122);");
+    //White-Grey Background-Color
+    //ui->customPlot->setBackground(QBrush(QColor(122, 122, 122)));
 }
