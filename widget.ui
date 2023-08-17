@@ -1682,7 +1682,15 @@ QComboBox:item{
     border-radius: 10px;
     border-color: beige;
     padding: 6px;
-}</string>
+}
+
+QComboBox QAbstractItemView {
+        background-color: rgb(41,41,41);
+        color: white;
+
+        selection-background-color: rgb(88, 88, 88);
+        selection-color: rgb(200, 200, 200);
+    }</string>
           </property>
          </widget>
         </item>

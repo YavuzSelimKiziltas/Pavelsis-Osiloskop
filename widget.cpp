@@ -115,7 +115,11 @@ Widget::Widget(QWidget *parent)
     QList<QSerialPortInfo> availablePorts = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &portInfo : availablePorts) {
         ui->serialPortComboBox->addItem(portInfo.portName());
+
     }
+
+
+
 
     /* Grafik Cizim Ayarlari
     iRangeDrag ile ekranı saga sola sürüklenebilir hale getiriyoruz
