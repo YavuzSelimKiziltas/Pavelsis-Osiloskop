@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1936</width>
+    <width>1280</width>
     <height>720</height>
    </rect>
   </property>
@@ -132,7 +132,6 @@
    <font>
     <family>Times New Roman</family>
     <pointsize>12</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
@@ -225,7 +224,6 @@
      <font>
       <family>MS Shell Dlg 2</family>
       <pointsize>8</pointsize>
-      <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
@@ -250,7 +248,6 @@ color: rgb(14, 171, 231);</string>
      <font>
       <family>MS Shell Dlg 2</family>
       <pointsize>8</pointsize>
-      <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
@@ -275,7 +272,6 @@ color: rgb(14, 171, 231);</string>
      <font>
       <family>MS Shell Dlg 2</family>
       <pointsize>8</pointsize>
-      <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
@@ -300,7 +296,6 @@ color: rgb(255, 175, 5);</string>
      <font>
       <family>MS Shell Dlg 2</family>
       <pointsize>8</pointsize>
-      <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
@@ -345,7 +340,6 @@ color: rgb(255, 175, 5);</string>
      <font>
       <family>MS Shell Dlg 2</family>
       <pointsize>8</pointsize>
-      <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
@@ -484,7 +478,6 @@ QSlider::handle:vertical {
     <font>
      <family>MS Shell Dlg 2</family>
      <pointsize>12</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -511,7 +504,6 @@ QSlider::handle:vertical {
     <font>
      <family>Times New Roman</family>
      <pointsize>12</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -535,7 +527,6 @@ QSlider::handle:vertical {
     <font>
      <family>MS Shell Dlg 2</family>
      <pointsize>12</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -559,7 +550,6 @@ QSlider::handle:vertical {
     <font>
      <family>MS Shell Dlg 2</family>
      <pointsize>12</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -768,7 +758,7 @@ QSlider::handle:horizontal {
        <x>0</x>
        <y>0</y>
        <width>504</width>
-       <height>520</height>
+       <height>525</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -913,7 +903,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -1066,7 +1055,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -1224,7 +1212,6 @@ QSlider::handle:horizontal {
          <font>
           <family>Times New Roman</family>
           <pointsize>8</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -1423,7 +1410,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>14</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -1580,7 +1566,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>14</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -1752,7 +1737,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -1908,7 +1892,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -2064,7 +2047,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -2227,7 +2209,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -2383,7 +2364,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -2415,7 +2395,7 @@ QSlider::handle:horizontal {
        <x>0</x>
        <y>0</y>
        <width>504</width>
-       <height>520</height>
+       <height>525</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
@@ -2560,7 +2540,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -2713,7 +2692,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -2871,7 +2849,6 @@ QSlider::handle:horizontal {
          <font>
           <family>Times New Roman</family>
           <pointsize>8</pointsize>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -3070,7 +3047,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>14</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -3227,7 +3203,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>14</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -3399,7 +3374,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -3555,7 +3529,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -3711,7 +3684,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -3874,7 +3846,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -4030,7 +4001,6 @@ QSlider::handle:horizontal {
            <font>
             <family>Times New Roman</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>

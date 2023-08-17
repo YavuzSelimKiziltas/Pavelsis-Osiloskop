@@ -443,6 +443,7 @@ void Widget::makePlot1(int graphIndex)
     // Changes the graph line color
     QPen graphPen;
     graphPen.setColor(QColor(255, 107, 243));
+    graphPen.setWidth(3);   // Changes the with of drawn plot
     ui->customPlot->graph(graphIndex)->setPen(graphPen);
 
     // shifts the graph display to the left so we get more realistic look
@@ -478,6 +479,7 @@ void Widget::makePlot2(int graphIndex)
     // Changes the graph line color
     QPen graphPen;
     graphPen.setColor(QColor(0, 107, 243));
+    graphPen.setWidth(3);   // Changes the with of drawn plot
     ui->customPlot->graph(graphIndex)->setPen(graphPen);
 
     // shifts the graph display to the left so we get more realistic look
