@@ -20,8 +20,6 @@ public:
     Ui::Widget *ui;
     ~Widget();
 
-    void StyleSheet();
-
 private:
     int frequencyValue;
     int amplitudeValue;
@@ -83,6 +81,10 @@ private slots:
     void on_channel1Button_pressed();
 
     void on_channel2Button_pressed();
+
+    void on_menuButton_pressed();
+
+    void on_pBtnBack_pressed();
 
 private:
 

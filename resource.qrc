@@ -1,8 +1,4 @@
 <RCC>
     <qresource prefix="/new/prefix1"/>
-    <qresource prefix="/">
-        <file>image/white_grey_grid.jpg</file>
-        <file>image/wp.jpg</file>
-        <file>image/griwp.jpg</file>
-    </qresource>
+    <qresource prefix="/"/>
 </RCC>

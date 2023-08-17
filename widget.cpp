@@ -1,6 +1,8 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include <QSerialPortInfo>                      // Otomatik olarak müsait seri portları listelemekte kullanılacak
+#include <QPixmap>
+#include <QVector>
 
 /*
  *  Qt Creator 11.0.0
@@ -15,7 +17,7 @@ const int FREQUENCY_MIN = 1;                    // min frekans belirtilir
 const int FREQUENCY_MAX = 100;                  // max frekans belirtilir
 
 #define SLIDER_MIN 0                            // min slider değeri (Horizontal ve Vertical Slider için)
-#define SLIDER_MAX 100                          // max slider değeri (Horizontal ve Vertical Slider için)
+#define SLIDER_MAX 1000                          // max slider değeri (Horizontal ve Vertical Slider için)
 
 // min ve max x - y degerleri hesaplanir. Başlangıç değerleri daha sonra güncelleniyor
 double minX = 0.0f;
@@ -24,17 +26,17 @@ double minY = 0.0f;
 double maxY = 5.0f;
 
 // Default Positions of Vertical and Horizontal Cursors
-#define HORIZONTAL_CURSOR_X 40
-#define HORIZONTAL_CURSOR_Y1 40
-#define HORIZONTAL_CURSOR_Y2 500
+#define HORIZONTAL_CURSOR_X 20
+#define HORIZONTAL_CURSOR_Y1 19
+#define HORIZONTAL_CURSOR_Y2 518
 
-#define VERTICAL_CURSOR_Y 40
-#define VERTICAL_CURSOR_X1 40
-#define VERTICAL_CURSOR_X2 660
+#define VERTICAL_CURSOR_Y 20
+#define VERTICAL_CURSOR_X1 20
+#define VERTICAL_CURSOR_X2 700
 
 // QCustomPlot için Boy ve genişlik değeri
-#define HEIGHT 460
-#define WIDTH 620
+#define HEIGHT 500
+#define WIDTH 680
 
 /* customPlot'ta birden fazla grafik eklemek için index numarası gerekiyor */
 static int graph1Index = 0;
@@ -97,21 +99,10 @@ Widget::Widget(QWidget *parent)
     ui->horizontalLine1->setVisible(0);
     ui->horizontalLine2->setVisible(0);
 
-    ui->horizontalLabel1->setVisible(0);
-    ui->horizontalLabel2->setVisible(0);
-    ui->verticalLabel1->setVisible(0);
-    ui->verticalLabel2->setVisible(0);
-
     // Red label sadece kırmızı bir nokta çiziyor ekrana
     ui->redLabel->setVisible(0);
     ui->pointLabel->setVisible(0);
 
-
-    // Cursorların rengini ayarlıyoruz
-    //ui->verticalLine1->setStyleSheet("background-color: rgb(255, 175, 5);");
-    //ui->verticalLine2->setStyleSheet("background-color: rgb(255, 175, 5);");
-    //ui->horizontalLine1->setStyleSheet("background-color: rgb(14, 171, 231);");
-    //ui->horizontalLine2->setStyleSheet("background-color: rgb(14, 171, 231);");
 
     // Slider hareket ettigi zaman cursor'da onunla birlikte hareket ediyor
     connect(ui->cursor1HorizontalSlider, &QSlider::sliderMoved, this, &Widget::draw_vertical_cursor_1);
@@ -136,15 +127,9 @@ Widget::Widget(QWidget *parent)
     ui->customPlot->axisRects().at(0)->setRangeDrag(Qt::Horizontal);
     ui->customPlot->axisRects().at(0)->setRangeZoom(Qt::Horizontal);
 
-    // x eksenindeki gridi acar ve gri renkte gösterir
-    ui->customPlot->xAxis->grid()->setSubGridVisible(true);
-    ui->customPlot->xAxis->grid()->setSubGridPen(QPen(Qt::gray, 1, Qt::DotLine));
 
-    // y eksenindeki gridi acar ve gri renkte gösterir
-    ui->customPlot->yAxis->grid()->setSubGridVisible(true);
-    ui->customPlot->yAxis->grid()->setSubGridPen(QPen(Qt::gray, 1, Qt::DotLine));
 
-    // 40 pixel kenar margini ekler (güzel görünmesi icin)
+    // 20 pixel kenar margini ekler (güzel görünmesi icin)
     ui->customPlot->plotLayout()->setMargins(QMargins(20, 20, 20, 20));
     ui->customPlot->axisRect()->setAutoMargins(QCP::MarginSide::msNone);
     ui->customPlot->axisRect()->setMargins(QMargins(0, 0, 0, 0));
@@ -156,7 +141,10 @@ Widget::Widget(QWidget *parent)
     //.........................................................................................
     //.........................................................................................
 
-    //Kenar Çizgileri (Kare)2
+    //Resmi yükleyin
+    ui->customPlot->axisRect()->setBackground(QPixmap(":/new/prefix1/image/grid (1).png"));
+
+    //Kenar Çizgileri (Kare)
     ui->customPlot->xAxis->setBasePen(QPen(Qt::white));
     ui->customPlot->xAxis2->setBasePen(QPen(Qt::white));
     ui->customPlot->yAxis->setBasePen(QPen(Qt::white));
@@ -166,22 +154,28 @@ Widget::Widget(QWidget *parent)
     ui->customPlot->yAxis->setTickPen(QPen(Qt::red)); //Sol
     ui->customPlot->xAxis2->setTickPen(QPen(Qt::red)); //Üst
     ui->customPlot->yAxis2->setTickPen(QPen(Qt::red)); //Sağ
-    ui->customPlot->xAxis->setTickLength(0, 3);
-    ui->customPlot->xAxis2->setTickLength(0, 3);
-    ui->customPlot->yAxis->setTickLength(0, 3);
-    ui->customPlot->yAxis2->setTickLength(0, 3);
-    //Numaraların duruş şekli
-    ui->customPlot->xAxis->setTickLabelRotation(0);
-    //Grid rengi
-    ui->customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
-    ui->customPlot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
-    ui->customPlot->xAxis2->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
-    ui->customPlot->yAxis2->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+
     //Kenar yazıları ve numaralar
+    ui->customPlot->xAxis->setTickLabels(false); //Numaraları kaldır
+    ui->customPlot->yAxis->setTickLabels(false);
+    ui->customPlot->xAxis->setTicks(false);
+    ui->customPlot->yAxis->setTicks(false);
+
+    // X ve Y eksenindeki çizgileri ve numaraları gizle
+    ui->customPlot->xAxis->grid()->setVisible(false);
+    ui->customPlot->yAxis->grid()->setVisible(false);
+
     ui->customPlot->xAxis->setTickLabelColor(Qt::white);
     ui->customPlot->yAxis->setTickLabelColor(Qt::white);
     ui->customPlot->xAxis->setLabelColor(Qt::white);
     ui->customPlot->yAxis->setLabelColor(Qt::white);
+
+    ui->customPlot->xAxis->setLabelPadding(0);
+    ui->customPlot->yAxis->setLabelPadding(0);
+
+    QFont font("Arial", 10);
+    ui->customPlot->xAxis->setLabelFont(font);
+    ui->customPlot->yAxis->setLabelFont(font);
 
     // İlk olarak, bir lineer renk geçişi (gradient) tanımlanıyor, bu gradientin arka plan olarak kullanılması amaçlanıyor.
     QLinearGradient plotGradient;
@@ -205,15 +199,9 @@ Widget::Widget(QWidget *parent)
     // Gradientin başlangıç noktasındaki rengi ayarlanıyor (0'a karşılık gelen renk).
     axisRectGradient.setColorAt(0, QColor(110,110,110));
     // Gradientin sonlandığı noktadaki rengi ayarlanıyor (1'e karşılık gelen renk).
-    axisRectGradient.setColorAt(1, QColor(150,150,150));
+    axisRectGradient.setColorAt(1, QColor(120,120,120));
     // Oluşturulan gradient, bir UI elemanının ekseni çevreleyen alanın arka plan rengi olarak atanıyor.
     ui->customPlot->axisRect()->setBackground(axisRectGradient);
-
-    // X ve Y ekseni ızgara aralıklarını ayarla
-    ui->customPlot->xAxis->ticker()->setTickCount(1);
-    ui->customPlot->yAxis->ticker()->setTickCount(1);
-    ui->customPlot->yAxis2->ticker()->setTickCount(1);
-    ui->customPlot->xAxis2->ticker()->setTickCount(1);
 
 }
 
@@ -227,23 +215,24 @@ Widget::~Widget()
 void Widget::on_channel1Button_pressed()
 {
     static bool isClicked = 1;
-    // toggles the channel1Radio button. Later checked in update_graph_with_new_data
     ui->channel1Radio->setChecked(!(ui->channel1Radio->isChecked()));
 
     if(isClicked) {
-        graph1Index = ui->customPlot->graphCount();  // gets the graph current count
+        graph1Index = ui->customPlot->graphCount();
         ui->customPlot->addGraph();
         qDebug() << "Open Channel 1, Index = " << graph1Index;
         makePlot1(graph1Index);
-        ui->channel1Button->setStyleSheet("background-color: rgb(255, 107, 243);");
+        ui->channel1Button->setStyleSheet("background-color: rgb(255, 0, 155);\
+                                          border-style: outset;\
+                                          border-width: 2px;\
+                                          border-radius: 10px;\
+                                          border-color: beige;\
+                                          padding: 6px;");
     }
 
     else {
         qDebug() << "Destroy Channel 1";
 
-        /* Check the documentation. Basically shifts other graph's index
-        so that there is no out of index error
-        */
         if(graph1Index == 0 && ui->customPlot->graphCount() == 2) {
             graph2Index = 0;
         }
@@ -251,9 +240,14 @@ void Widget::on_channel1Button_pressed()
         qDebug() << "Removing Index = " << graph1Index;
         ui->customPlot->removeGraph(graph1Index);
         ui->customPlot->replot();
-        ui->channel1Button->setStyleSheet("background-color: white;");
+        ui->channel1Button->setStyleSheet("background-color: darkgray;\
+                                          border-style: outset;\
+                                          border-width: 2px;\
+                                          border-radius: 10px;\
+                                          border-color: beige;\
+                                          padding: 6px;");
     }
-    // Whenever button is pressed isClicked is toggled so that we can check On/Off condition
+
     isClicked = !isClicked;
 }
 
@@ -261,23 +255,24 @@ void Widget::on_channel1Button_pressed()
 void Widget::on_channel2Button_pressed()
 {
     static bool isClicked2 = 1;
-    // toggles the channel1Radio button. Later checked in update_graph_with_new_data
     ui->channel2Radio->setChecked(!(ui->channel2Radio->isChecked()));
 
     if(isClicked2) {
-        graph2Index = ui->customPlot->graphCount();   // gets the number of graph
+        graph2Index = ui->customPlot->graphCount();
         ui->customPlot->addGraph();
         qDebug() << "Open Channel 2, Index = " << graph2Index;
         makePlot2(graph2Index);
-        ui->channel2Button->setStyleSheet("background-color: rgb(0, 107, 243)");
+        ui->channel2Button->setStyleSheet("background-color: rgb(0, 0, 255);\
+                                          border-style: outset;\
+                                          border-width: 2px;\
+                                          border-radius: 10px;\
+                                          border-color: beige;\
+                                          padding: 6px;");
     }
 
     else {
         qDebug() << "Destroy Channel 2";
 
-        /* Check the documentation. Basically shifts other graph's index
-        so that there is no out of index error
-        */
         if(graph2Index == 0 && ui->customPlot->graphCount() == 2) {
             graph1Index = 0;
         }
@@ -285,18 +280,23 @@ void Widget::on_channel2Button_pressed()
         qDebug() << "Removing Index = " << graph2Index;
         ui->customPlot->removeGraph(graph2Index);
         ui->customPlot->replot();
-        ui->channel2Button->setStyleSheet("background-color: white;");
+        ui->channel2Button->setStyleSheet("background-color: darkgray;\
+                                          border-style: outset;\
+                                          border-width: 2px;\
+                                          border-radius: 10px;\
+                                          border-color: beige;\
+                                          padding: 6px;");
     }
 
-    // Whenever button is pressed isClicked is toggled so that we can check On/Off condition
     isClicked2 = !isClicked2;
 }
+
+
 
 /* moves the cursor with slider value is the pixel value */
 void Widget::draw_horizontal_cursor_1(int value)
 {
     ui->horizontalLine1->move(HORIZONTAL_CURSOR_X, HORIZONTAL_CURSOR_Y1 + value);
-    ui->horizontalLabel1->move(50, 20 + value);     // Original position of the label is (50,20)
 }
 
 /* moves the cursor with slider value is the pixel value */
@@ -304,7 +304,6 @@ void Widget::draw_horizontal_cursor_2(int value)
 {
     // value is pixel value. Subtract because it is going down
     ui->horizontalLine2->move(HORIZONTAL_CURSOR_X, HORIZONTAL_CURSOR_Y2 - value);
-    ui->horizontalLabel2->move(600, 480 - value);     // Original position of the label is (600,480)
 }
 
 /* moves the cursor with slider value is the pixel value */
@@ -312,7 +311,6 @@ void Widget::draw_vertical_cursor_1(int value)
 {
     // value is pixel value
     ui->verticalLine1->move(VERTICAL_CURSOR_X1 + value, VERTICAL_CURSOR_Y);
-    ui->verticalLabel1->move(50 + value, 480);     // Original position of the label is (50,480)
 }
 
 /* moves the cursor with slider value is the pixel value */
@@ -320,7 +318,6 @@ void Widget::draw_vertical_cursor_2(int value)
 {
     // value is pixel value. Subtract because it is going left
     ui->verticalLine2->move(VERTICAL_CURSOR_X2 - value, VERTICAL_CURSOR_Y);
-    ui->verticalLabel2->move(600 - value, 50);     // Original position of the label is (600,480)
 }
 
 // Reads the values from connected COMPORT
@@ -531,6 +528,7 @@ void Widget::mousePressEvent(QMouseEvent* event)
         ui->redLabel->move(0,0);
     }
 
+
     for (int i = 0; i < xData.size(); i++) {
         if(abs(x - xData.at(i)) < xTolerance && (abs(y - y1Data.at(i)) < yTolerance || abs(y - y2Data.at(i)) < yTolerance)) {
 
@@ -583,22 +581,20 @@ void Widget::on_horizontalEnableRadio_toggled(bool checked)
     ui->cursor2VerticalSlider->setVisible(checked);
     ui->horizontalLine1->setVisible(checked);
     ui->horizontalLine2->setVisible(checked);
-    ui->horizontalLabel1->setVisible(checked);
-    ui->horizontalLabel2->setVisible(checked);
 
     if(checked) {
         // Prints the distance between two cursors on the label below customPlot object
         double yDifference = ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine2->y()) - ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine1->y());
         ui->dyLabel->setText(QString("Dy = %1").arg(abs(yDifference), 0, 'f', 2));
-
-        // Prints the position of the cursor right next to it
-        double yPosition;
-        yPosition = ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine1->y());
-        ui->horizontalLabel1->setText(QString("y = %1").arg(yPosition, 0, 'f', 2));
     }
 
-    else
-        ui->dyLabel->setText("");
+    else {
+        ui->dyLabel->setText("");   // Display no text
+        // Reset the cursor positions
+        ui->horizontalLine1->move(HORIZONTAL_CURSOR_X, HORIZONTAL_CURSOR_Y1);
+        ui->horizontalLine2->move(HORIZONTAL_CURSOR_X, HORIZONTAL_CURSOR_Y2);
+    }
+
 }
 
 // Makes the cursors, labels and sliders visible to use
@@ -608,22 +604,21 @@ void Widget::on_verticalEnableRadio_toggled(bool checked)
     ui->cursor2HorizontalSlider->setVisible(checked);
     ui->verticalLine1->setVisible(checked);
     ui->verticalLine2->setVisible(checked);
-    ui->verticalLabel1->setVisible(checked);
-    ui->verticalLabel2->setVisible(checked);
+
 
 
     if(checked) {
         // Prints the distance between two cursors on the label below customPlot object
         double xDifference = ui->customPlot->xAxis->pixelToCoord(ui->verticalLine1->x()) - ui->customPlot->xAxis->pixelToCoord(ui->verticalLine2->x());
         ui->dxLabel->setText(QString("Dx = %1").arg(abs(xDifference), 0, 'f', 2));
-
-        // Prints the position of the cursor right next to it
-        double xPosition;
-        xPosition = ui->customPlot->xAxis->pixelToCoord(ui->verticalLine1->x());
-        ui->verticalLabel1->setText(QString("x = %1").arg(xPosition, 0, 'f', 2));
     }
-    else
-        ui->dxLabel->setText("");
+    else {
+        ui->dxLabel->setText("");   // Display no text
+        // Reset the cursor positions
+        ui->verticalLine1->move(VERTICAL_CURSOR_X1, VERTICAL_CURSOR_Y);
+        ui->verticalLine2->move(VERTICAL_CURSOR_X2, VERTICAL_CURSOR_Y);
+    }
+
 }
 
 /* on_cursor1HorizontalSlider_valueChanged, on_cursor2HorizontalSlider_valueChanged
@@ -633,60 +628,46 @@ void Widget::on_verticalEnableRadio_toggled(bool checked)
 void Widget::on_cursor1HorizontalSlider_valueChanged(int value)
 {
     ui->receivedDataText->setPlainText(QString::number(value));
-    // 6.2 is because width is 620px and we map it to 100 slider value
-    draw_vertical_cursor_1(value * 6.2);
+    // We map the customPlot width to slider value to move cursor by pixel
+    draw_vertical_cursor_1((value * WIDTH) / (SLIDER_MAX - SLIDER_MIN));
+    qDebug() << value * (WIDTH / SLIDER_MAX);
 
     // When cursor is moved recalculates the difference and position value
     double xDifference = ui->customPlot->xAxis->pixelToCoord(ui->verticalLine1->x()) - ui->customPlot->xAxis->pixelToCoord(ui->verticalLine2->x());
     ui->dxLabel->setText(QString("Dx = %1").arg(abs(xDifference), 0, 'f', 2));
-
-    double xPosition;
-    xPosition = ui->customPlot->xAxis->pixelToCoord(ui->verticalLine1->x());
-    ui->verticalLabel1->setText(QString("x = %1").arg(xPosition, 0, 'f', 2));
 }
 
 void Widget::on_cursor2HorizontalSlider_valueChanged(int value)
 {
     ui->receivedDataText->setPlainText(QString::number(value));
-    // 6.2 is because width is 620px and we map it to 100 slider value
-    draw_vertical_cursor_2(value * 6.2);
+    // We map the customPlot width to slider value to move cursor by pixel
+    draw_vertical_cursor_2((value * WIDTH) / (SLIDER_MAX - SLIDER_MIN));
 
     double xDifference = ui->customPlot->xAxis->pixelToCoord(ui->verticalLine1->x()) - ui->customPlot->xAxis->pixelToCoord(ui->verticalLine2->x());
     ui->dxLabel->setText(QString("Dx = %1").arg(abs(xDifference), 0, 'f', 2));
-
-    double xPosition;
-    xPosition = ui->customPlot->xAxis->pixelToCoord(ui->verticalLine2->x());
-    ui->verticalLabel2->setText(QString("x = %1").arg(xPosition, 0, 'f', 2));
 }
 
 void Widget::on_cursor1VerticalSlider_valueChanged(int value)
 {
     ui->receivedDataText->setPlainText(QString::number(value));
-    // 4.6 is because height is 460px and we map it to 100 slider value
-    draw_horizontal_cursor_1(value * 4.6);
+    // We map the customPlot height to slider value to move cursor by pixel
+    draw_horizontal_cursor_1((value * HEIGHT) / (SLIDER_MAX - SLIDER_MIN));
 
     double yDifference = ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine2->y()) - ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine1->y());
     ui->dyLabel->setText(QString("Dy = %1").arg(abs(yDifference), 0, 'f', 2));
-
-    double yPosition;
-    yPosition = ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine1->y());
-    ui->horizontalLabel1->setText(QString("y = %1").arg(yPosition, 0, 'f', 2));
 }
 
 
 void Widget::on_cursor2VerticalSlider_valueChanged(int value)
 {
     ui->receivedDataText->setPlainText(QString::number(value));
-    // 4.6 is because height is 460px and we map it to 100 slider value
-    draw_horizontal_cursor_2(value * 4.6);
+    // We map the customPlot height to slider value to move cursor by pixel
+    draw_horizontal_cursor_2((value * HEIGHT) / (SLIDER_MAX - SLIDER_MIN));
 
     double yDifference = ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine2->y()) - ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine1->y());
     ui->dyLabel->setText(QString("Dy = %1").arg(abs(yDifference), 0, 'f', 2));
 
 
-    double yPosition;
-    yPosition = ui->customPlot->yAxis->pixelToCoord(ui->horizontalLine2->y());
-    ui->horizontalLabel2->setText(QString("y = %1").arg(yPosition, 0, 'f', 2));
 }
 
 // Toggles the radio button. Later checked inupdate_graph_with_new_data()
@@ -795,9 +776,17 @@ void Widget::on_connectButton_pressed()
     }
 }
 
-//StyleSheet Fonskiyonu
-void Widget::StyleSheet(){
-    //ui->customPlot->setStyleSheet("background-color: rgb(122, 122, 122);");
-    //White-Grey Background-Color
-    //ui->customPlot->setBackground(QBrush(QColor(122, 122, 122)));
+
+void Widget::on_menuButton_pressed()
+{
+    int pageIndex = 1;
+    ui->stackedWidget->setCurrentIndex(pageIndex);
 }
+
+
+void Widget::on_pBtnBack_pressed()
+{
+    int pageIndex = 0;
+    ui->stackedWidget->setCurrentIndex(pageIndex);
+}
+
